@@ -25,7 +25,7 @@ export class UploadFileService {
       });
     
     const params = {
-      Bucket: 'photobucket619',
+      Bucket: credentials.bucket,
       Key: file.name,
       Body: file,
       Tagging: `UserTag1=${this.tag1}&UserTag2=${this.tag2}&UserTag3=${this.tag3}`,
