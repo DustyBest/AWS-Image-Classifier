@@ -1,0 +1,20 @@
+<div id='container'>
+    <div id="app">
+        <h2>Classify My Image</h2>
+        <label class="btn btn-default">
+            <input type="file" accept='image/*' id="file" (change)="selectFile($event)">
+            <label for="file">choose a file</label>
+        </label><br>
+
+        <img [src]='this.imgURL' height="200"><br><br>
+        <label>Enter Your Own Tags</label><br>
+        <label>1. </label><input id='tag1' type='text' [(ngModel)]='this.uploadService.tag1'><br>
+        <label>2. </label><input id='tag2' type='text' [(ngModel)]='this.uploadService.tag2'><br>
+        <label>3. </label><input id='tag3' type='text' [(ngModel)]='this.uploadService.tag3'><br><br>
+        <button *ngIf='selectedFile' class="btn btn-success" [disabled]="!selectedFile" (click)="upload()">Send Image</button><br>
+
+        <div id=response>
+            <p *ngIf='message'>{{message}}</p>
+        </div>
+    </div>
+</div>
