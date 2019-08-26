@@ -2,26 +2,24 @@
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 8.1.1.
 
-## Development server
+## To Run Yourself...
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
+After signing up for an AWS account of your own...
 
-## Code scaffolding
+Create a new IAM user with AWS console access, and Administrator permissions. Generate security keys for the new user and save them somewhere safe.
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+Now, while logged in as your new AWS IAM user...
 
-## Build
+Within DynamoDB, create a new table, noting the table's name.
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `--prod` flag for a production build.
+Within AWS Lambda Service, author a new Lambda from scratch.
 
-## Running unit tests
+From the root folder and within /assets there is an index.js file. This is the code for the AWS Lambda function that will communicate to Rekognition, and DynamoDB. On line 47 you will need to enter your unique DynamoDB table name you've noted above.
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+Set the lambda trigger to S3 (all creation events), and give the lambda permissions to use Rekognition and DynamoDB.
 
-## Running end-to-end tests
+Within S3, create a new bucket, noting the bucket's name.
 
-Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protractortest.org/).
+From the project root folder, navigate to /assets and replace creds.example.json with creds.json and insert your own credentials. These are the keys we generated earlier when we made an IAM User. Insert the name of your S3 bucket and you're all finished. 
 
-## Further help
-
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI README](https://github.com/angular/angular-cli/blob/master/README.md).
+After installing dependencies and compiling, you should be able to launch the Angular app in a browser ('ng seve') and start classifying some images!
