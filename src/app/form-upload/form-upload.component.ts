@@ -19,7 +19,7 @@ export class FormUploadComponent implements OnInit {
     var reader = new FileReader();
     reader.readAsDataURL(this.selectedFile); 
     reader.onload = (event) => { 
-      this.imgURL = reader.result; 
+      this.imgURL = reader.result as string; 
     }
   }
 
